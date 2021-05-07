@@ -1,2 +1,3 @@
 # ToDoList-react
-Created with CodeSandbox
+deployed link
+https://yaswanth-todo-list.netlify.app/
