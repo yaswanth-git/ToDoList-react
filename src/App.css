@@ -1,0 +1,63 @@
+h1 {
+  color: #27aedb;
+  text-align: center;
+}
+
+button {
+  color: #27aedb;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: auto;
+}
+#task {
+  width: 75%;
+  display: block;
+  margin: auto;
+  height: 100px;
+}
+
+.bg-pink {
+  background-color: pink;
+}
+.button {
+  border: 1px solid black;
+  text-align: center;
+  padding: 2px;
+}
+.save {
+  background-color: lightgreen;
+  width: 5%;
+  margin: 1px;
+}
+.edit {
+  background-color: lightblue;
+  width: 5%;
+  margin: 1px;
+}
+.delete {
+  background-color: lightcoral;
+  width: 5%;
+}
+.list,
+.lst {
+  margin: 5px;
+  display: flex;
+}
+div > input {
+  width: 95%;
+}
+.button:hover {
+  cursor: pointer;
+}
+.even {
+  padding: 5px;
+  background-color: antiquewhite;
+  width: 90%;
+}
+.odd {
+  padding: 5px;
+  background-color: aqua;
+  width: 90%;
+}
