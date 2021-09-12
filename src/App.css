@@ -3,42 +3,58 @@ h1 {
   text-align: center;
 }
 
-button {
-  color: #27aedb;
+.save,
+.edit,
+.delete {
   text-align: center;
   justify-content: center;
   align-items: center;
   display: block;
   margin: auto;
 }
-#task {
-  width: 75%;
-  display: block;
+button {
+  color: #27aedb;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  height: 100px;
+}
+#task {
+  width: 500px;
+  font-size: larger;
+  margin: auto;
 }
 
 .bg-pink {
   background-color: pink;
 }
-.button {
+button {
+  position: relative;
+  top: -1px;
   border: 1px solid black;
+  border-left: none;
   text-align: center;
   padding: 2px;
+  width: 100px;
+  height: 28px;
 }
 .save {
   background-color: lightgreen;
   width: 5%;
-  margin: 1px;
+  min-width: fit-content;
+  padding: 5px;
 }
 .edit {
   background-color: lightblue;
   width: 5%;
-  margin: 1px;
+  min-width: fit-content;
+  padding: 5px;
 }
 .delete {
   background-color: lightcoral;
   width: 5%;
+  min-width: fit-content;
+  padding: 5px;
 }
 .list,
 .lst {
@@ -48,16 +64,21 @@ button {
 div > input {
   width: 95%;
 }
-.button:hover {
+button,.save,.delete,.edit:hover {
   cursor: pointer;
 }
 .even {
   padding: 5px;
   background-color: antiquewhite;
-  width: 90%;
+  width: 100%;
 }
 .odd {
   padding: 5px;
   background-color: aqua;
-  width: 90%;
+  width: 100%;
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+
 }

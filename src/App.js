@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { setTextRange } from "typescript";
 import "./App.css";
 
 function App() {
+  const [text, setText] = useState("");
   const [tdl, setList] = useState([]);
   const [edt, setEdt] = useState(null);
   const adt = () => {
-    if (document.getElementById("task").value.trim() != "")
-      setList([...tdl, document.getElementById("task").value]);
-    document.getElementById("task").value = "";
+    if (text) {
+      setList([...tdl, text]);
+      setText("");
+    }
   };
   const del = (i) => {
     setList(
@@ -27,15 +30,23 @@ function App() {
   return (
     <div id="main">
       <h1>To Do List</h1>
-      <textarea id="task" />
-      <button
-        id="btn"
-        onClick={() => {
-          adt();
-        }}
-      >
-        Add
-      </button>
+      <div className="wrapper">
+        <div>
+          <input
+            id="task"
+            value={text}
+            onChange={(e) => setText(e.currentTarget.value)}
+          />
+          <button
+            id="btn"
+            onClick={() => {
+              adt();
+            }}
+          >
+            Add
+          </button>
+        </div>
+      </div>
       <div className="container">
         {tdl.map((e, index) => {
           const cls = index % 2 == 0 ? "even" : "odd";
