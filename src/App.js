@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { setTextRange } from "typescript";
 import "./App.css";
 
 function App() {
