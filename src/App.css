@@ -9,19 +9,12 @@ h1 {
   text-align: center;
   justify-content: center;
   align-items: center;
-  display: block;
-  margin: auto;
-}
-button {
-  color: #27aedb;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+  display: flex;
 }
 #task {
-  width: 500px;
+  width: 75%;
   font-size: larger;
+  display: inline-block;
   margin: auto;
 }
 
@@ -29,14 +22,19 @@ button {
   background-color: pink;
 }
 button {
+  color: #27aedb;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   position: relative;
   top: -1px;
   border: 1px solid black;
   border-left: none;
   text-align: center;
   padding: 2px;
-  width: 100px;
+  width: 20%;
   height: 28px;
+  /* display: flex; */
 }
 .save {
   background-color: lightgreen;
@@ -71,11 +69,13 @@ button,.save,.delete,.edit:hover {
   padding: 5px;
   background-color: antiquewhite;
   width: 100%;
+  overflow-wrap: anywhere;
 }
 .odd {
   padding: 5px;
   background-color: aqua;
   width: 100%;
+  overflow-wrap: anywhere;
 }
 .wrapper{
   display: flex;
