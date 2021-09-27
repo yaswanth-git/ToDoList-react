@@ -1,29 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [text, setText] = useState("");
-  const [tdl, setList] = useState([]);
+  const [tdl, setTdl] = useState([]);
   const [edt, setEdt] = useState(null);
-  const adt = () => {
-    if (text) {
-      setList([...tdl, text]);
-      setText("");
-    }
+  const [flag, setFlag] = useState(true);
+  useEffect(() => {
+    const magic = async () => {
+      try {
+        const res = await fetch("https://yaswanth-to-do.herokuapp.com/");
+        const data = await res.json();
+        setTdl(data);
+      } catch (err) {
+        console.log("error....", err);
+      }
+    };
+    magic();
+  }, [flag]);
+  const adt = async () => {
+    await fetch("https://yaswanth-to-do.herokuapp.com/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: text,
+      }),
+    });
+    setFlag(!flag);
   };
-  const del = (i) => {
-    setList(
-      tdl.filter((magic, index) => {
-        return i != index;
-      })
-    );
+  const del = async (i) => {
+    await fetch("https://yaswanth-to-do.herokuapp.com/", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: i,
+      }),
+    });
+    setFlag(!flag);
   };
-  const save = (i, value) => {
+  const save = async (i, value) => {
     if (value.trim() != "") {
+      await fetch("https://yaswanth-to-do.herokuapp.com/", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: i,
+          text: value,
+        }),
+      });
       setEdt(null);
-      const temp = [...tdl];
-      temp[i] = value;
-      setList(temp);
+      setFlag(!flag);
     }
   };
   return (
@@ -49,13 +75,13 @@ function App() {
       <div className="container">
         {tdl.map((e, index) => {
           const cls = index % 2 == 0 ? "even" : "odd";
-          if (index == edt) {
+          if (e._id == edt) {
             return (
-              <div className="lst">
-                <input type="text" id="1" defaultValue={e} />
+              <div key={e._id} className="lst">
+                <input type="text" id="1" defaultValue={e.text} />
                 <div
                   className="button save"
-                  onClick={() => save(index, document.getElementById(1).value)}
+                  onClick={() => save(e._id, document.getElementById(1).value)}
                 >
                   Save
                 </div>
@@ -63,15 +89,15 @@ function App() {
             );
           }
           return (
-            <div className="list">
-              <div className={cls}>{e}</div>
-              <div className="edit" onClick={() => setEdt(index)}>
+            <div key={e._id} className="list">
+              <div className={cls}>{e.text}</div>
+              <div className="edit" onClick={() => setEdt(e._id)}>
                 Edit
               </div>
               <div
                 className="delete"
                 onClick={() => {
-                  del(index);
+                  del(e._id);
                 }}
               >
                 Remove
